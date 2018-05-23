@@ -1,0 +1,8 @@
+<%= column_chart [
+                     { name: '가정용 부하사용 예측량', data: @home },
+                     { name: 'EV사용 예측량', data: @ev },
+                     { name: '태양광발전 예측량', data: @sun },
+                     { name: '발전량-부하사용량', data: @minus },
+                     { name: '발전량-부하사용량-EV', data: @soc }
+
+                 ], curve: false %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  home: 1.5
+  ev: 1.5
+  sun: 1.5
+
+two:
+  date: MyString
+  home: 1.5
+  ev: 1.5
+  sun: 1.5

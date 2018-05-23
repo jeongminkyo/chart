@@ -1,0 +1,2 @@
+class PredictChart < ApplicationRecord
+end

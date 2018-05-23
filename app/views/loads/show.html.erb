@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @load.date %>
+</p>
+
+<p>
+  <strong>Home:</strong>
+  <%= @load.home %>
+</p>
+
+<p>
+  <strong>Ev:</strong>
+  <%= @load.ev %>
+</p>
+
+<p>
+  <strong>Sun:</strong>
+  <%= @load.sun %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>

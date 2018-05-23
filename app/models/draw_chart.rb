@@ -1,0 +1,2 @@
+class DrawChart < ApplicationRecord
+end

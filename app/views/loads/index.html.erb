@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loads</h1>
+
+<table class="table table-hover no-more-tables">
+  <thead>
+    <tr>
+      <th>날짜</th>
+      <th>가정용 부하사용 예측량</th>
+      <th>EV 사용 예측량</th>
+      <th>태양광 발전 예측량</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.date %></td>
+        <td><%= load.home %></td>
+        <td><%= load.ev %></td>
+        <td><%= load.sun %></td>
+        <td><%= link_to 'Show', load %></td>
+        <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load', new_load_path %>
+

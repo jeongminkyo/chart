@@ -1,0 +1,32 @@
+<%= form_for(temp) do |f| %>
+  <% if temp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(temp.errors.count, "error") %> prohibited this temp from being saved:</h2>
+
+      <ul>
+      <% temp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :home_predict %>
+    <%= f.text_field :home_predict %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ev_predict %>
+    <%= f.text_field :ev_predict %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sun_predict %>
+    <%= f.text_field :sun_predict %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

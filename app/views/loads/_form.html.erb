@@ -1,0 +1,45 @@
+<%= form_for(load) do |f| %>
+  <% if load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load.errors.count, "error") %> prohibited this load from being saved:</h2>
+
+      <ul>
+      <% load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :날짜 %>
+    <%= f.text_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :가정용부하사용예측량 %>
+    <%= f.text_field :home %>
+  </div>
+
+  <div class="field">
+    <%= f.label :EV사용예측량 %>
+    <%= f.text_field :ev %>
+  </div>
+
+  <div class="field">
+    <%= f.label :태양광발전예측량 %>
+    <%= f.text_field :sun %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+    $(function() {
+        $( "#load_date" ).datepicker({
+            dateFormat: 'yyyy-mm-dd'
+        });
+    });
+</script>

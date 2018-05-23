@@ -1,0 +1,21 @@
+<%= form_for(@predict_chart) do |f| %>
+  <% if predict_chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(predict_chart.errors.count, "error") %> prohibited this predict_chart from being saved:</h2>
+
+      <ul>
+      <% @predict_chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.date %>
+    <%= f.home_predict %>
+    <%= f.EV_predict %>
+    <%= f.sun_predict %>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Home predict:</strong>
+  <%= @temp.home_predict %>
+</p>
+
+<p>
+  <strong>Ev predict:</strong>
+  <%= @temp.ev_predict %>
+</p>
+
+<p>
+  <strong>Sun predict:</strong>
+  <%= @temp.sun_predict %>
+</p>
+
+<%= link_to 'Edit', edit_temp_path(@temp) %> |
+<%= link_to 'Back', temps_path %>

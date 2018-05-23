@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Predict Charts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @predict_charts.each do |predict_chart| %>
+      <tr>
+        <td><%= link_to 'Show', predict_chart %></td>
+        <td><%= link_to 'Edit', edit_predict_chart_path(predict_chart) %></td>
+        <td><%= link_to 'Destroy', predict_chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Predict Chart', new_predict_chart_path %>
