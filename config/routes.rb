@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :loads
+  resources :loads do
+    collection { post :import }
+  end
   resources :temps
   resources :predict_charts
   get 'welcome/index'
