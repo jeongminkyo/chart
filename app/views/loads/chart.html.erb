@@ -1,8 +1,10 @@
+<% @total_home.each_with_index do |home, index| %>
 <%= column_chart [
-                     { name: '가정용 부하사용 예측량', data: @home },
-                     { name: 'EV사용 예측량', data: @ev },
-                     { name: '태양광발전 예측량', data: @sun },
-                     { name: '발전량-부하사용량', data: @minus },
-                     { name: '발전량-부하사용량-EV', data: @soc }
+                     { name: '가정용 부하사용 예측량', data: @total_home[index] },
+                     { name: 'EV사용 예측량', data: @total_ev[index] },
+                     { name: '태양광발전 예측량', data: @total_sun[index] },
+                     { name: '발전량-부하사용량', data: @total_minus[index] },
+                     { name: '발전량-부하사용량-EV', data: @total_soc[index] }
 
                  ], curve: false %>
+<% end %>

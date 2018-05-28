@@ -10,18 +10,25 @@ class LoadsController < ApplicationController
   def chart
     @loads = Load.all
 
-    @home = []
-    @sun = []
-    @ev = []
-    @minus = []
-    @soc = []
+    @total_home = []
+    @total_ev = []
+    @total_sun = []
+    @total_minus = []
+    @total_soc = []
+    middle_home = []
+    middle_sun = []
+    middle_ev = []
+    middle_minus = []
+    middle_soc = []
 
+    @hash = {}
     @loads.each do |load|
       home = []
       sun = []
       ev = []
       minus = []
       soc = []
+
       home.push(load.date)
       sun.push(load.date)
       ev.push(load.date)
@@ -32,11 +39,38 @@ class LoadsController < ApplicationController
       ev.push(load.ev)
       minus.push(load.sun - load.home)
       soc.push(load.sun - load.home - load.ev)
-      @home.push(home)
-      @sun.push(sun)
-      @ev.push(ev)
-      @minus.push(minus)
-      @soc.push(soc)
+
+      middle_home.push(home)
+      middle_sun.push(sun)
+      middle_ev.push(ev)
+      middle_minus.push(minus)
+      middle_soc.push(soc)
+
+      if middle_home.size == 7
+        @total_home.push(middle_home.dup)
+        @total_ev.push(middle_ev.dup)
+        @total_sun.push(middle_sun.dup)
+        @total_minus.push(middle_minus.dup)
+        @total_soc.push(middle_soc.dup)
+        middle_home.clear
+        middle_ev.clear
+        middle_sun.clear
+        middle_minus.clear
+        middle_soc.clear
+      else
+        if @loads.last == load
+          @total_home.push(middle_home.dup)
+          @total_ev.push(middle_ev.dup)
+          @total_sun.push(middle_sun.dup)
+          @total_minus.push(middle_minus.dup)
+          @total_soc.push(middle_soc.dup)
+          middle_home.clear
+          middle_ev.clear
+          middle_sun.clear
+          middle_minus.clear
+          middle_soc.clear
+        end
+      end
     end
   end
 
@@ -96,7 +130,11 @@ class LoadsController < ApplicationController
 
   def import
     notice = Load.import(params[:file])
-    redirect_to '/loads', notice: notice
+    if notice == 'fail to upload'
+      redirect_to '/loads', flash: { error: notice }
+    else
+      redirect_to '/loads', notice: notice
+    end
   end
 
   private
