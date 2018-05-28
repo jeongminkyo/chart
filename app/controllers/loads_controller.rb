@@ -15,6 +15,7 @@ class LoadsController < ApplicationController
     @ev = []
     @minus = []
     @soc = []
+
     @loads.each do |load|
       home = []
       sun = []
@@ -94,8 +95,8 @@ class LoadsController < ApplicationController
   end
 
   def import
-    Load.import(params[:file])
-    redirect_to '/loads', notice: 'Loads successfully import.'
+    notice = Load.import(params[:file])
+    redirect_to '/loads', notice: notice
   end
 
   private
